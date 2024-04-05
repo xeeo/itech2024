@@ -1,1 +1,32 @@
+Creati o aplicatie care monitorizeaza alte aplicatii. Sa ii spunem ItecMonitor.
 
+ItecMonitor va avea un Developer Dashboard si un Dashboard public. Dashboardul pentru Developer se poate accesa doar dupa autentificare. 
+Autentificarea poate fi atat user/pass cat si prin social media accounts.
+
+Punctarea se va face bazat pe Tiers. Pentru fiecare tear indeplibit se primesc de la 0 la 10 de puncte in functie de complexitatea implementarii. 
+
+Tier 1.
+* Developerul poate sa adauge Aplicatii pentru monitoarizare, si poate inregistra endporinturi pentru aceasta aplicatie. 
+* Pentru fiecare aplicatie, Developerul are acces la un Dashboard, in care vede toate endpointurile listate cu starea lor pe ultimele X zile/ore.
+
+Tier 2. 
+* Pentru a monitoriza starea aplicatiei, ItecMonitor va calluii endpointurile inregistrate in intervale de X secunde si va asigna 3 stari acelui endpoint:
+    - Stable (ultimnele 10 calluri sunt 200 sau 302)
+    - Unstable (exista cel putin un call, din ultimele 10 care nu este 200 sau 302)
+    - Down (nici unul din ultimele 10 calluri nu e 200 sau 302)
+* In functie de raspunsuri se va afisa in Dashboard evolutia starii fiecarui endpoint.
+* Starea aplicatiei este definita de cumulu starilor endpointurilor. Adica, 
+      Daca toate endpointurile sunt pe Stable, aplicatia e Stable. 
+      Daca cel putin un endpoint este pe Unstable sau Down, atunci aplicatia este Unstable. 
+      Daca toate endpointurile sunt pe Down, aplicatia este Down.
+
+Tier 3.
+* Din Dashboardul public, se poate raporta un bug de catre orice utilizator/vizitator al acelui dashboard.
+* Odata raportat, bug-ul trebuie sa apara intr-o sectiune dedicata in dashboardul Developerului si Aplicatia trece pe Unstable daca este pe Stable. Daca Apliactia este pe Unstable sau Down, raportarea unui bug nu va schimba starea aplicatiei. Daca aplicatia are raportat un bug, cat timp acesta nu este marcat ca rezolvat de catre Developer, aplicatia NU poate trece inapoi in Stable.
+
+Tier 4. 
+* Cand este raportat un bug, Developerul este notificat. Alegerea modalitatii de notificare este la alegerea echipei, si in functie de complexitate se va primi punctaj diferit. 
+
+Tier 5.
+* Starea endpointurilor se va reimprospata in real-time pe dashboarduri.
+* Developerul are posibilitate intr-o rubrica de Setari sa editeze intervalele notate cu X in enunt.
